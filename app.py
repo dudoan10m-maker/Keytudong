@@ -131,6 +131,15 @@ def issue_key(conn, order):
         """, (key, order["id"]))
     return key
 
+
+@app.get("/")
+def home():
+    return jsonify(
+        ok=True,
+        service="TXAl Payment Backend",
+        status="online"
+    )
+
 @app.get("/health")
 def health():
     try:
