@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: txal-payment-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: BANK_CODE
+        value: "970423"
+      - key: BANK_STK
+        value: "45626072009"
+      - key: BANK_ACCOUNT_NAME
+        value: "LO VAN HIEP"
+      - key: BANK_NAME
+        value: "TPBank"
+      # Optional: set these only if you have a real bank transaction verification API.
+      - key: BANK_VERIFY_URL
+        sync: false
+      - key: BANK_VERIFY_TOKEN
+        sync: false
